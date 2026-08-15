@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: terac-agent
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: TERAC_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5.4
+      - key: ALLOWED_ORIGIN
+        value: "*"
